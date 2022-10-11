@@ -15,6 +15,8 @@ public class R02_XP00_J {
         if(someFile.exists()) System.out.println("File exists");
         else System.out.println("File does not exist");
         //Do something with someFile
-        someFile.delete();
+        if(!someFile.delete()){
+            //Handle failure to delete the file
+        }
     }
 }
