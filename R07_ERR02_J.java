@@ -4,14 +4,17 @@
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.function.Supplier;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class R07_ERR02_J {
-
+    private static final Logger logger = Logger.getLogger(R07_ERR02_J.class.getName());
     public static void main(String[] args) {
         try {
             FileInputStream fin = new FileInputStream("test.txt");
         } catch (FileNotFoundException e) {
-            System.err.println(e);
+            logger.log(Level.SEVERE, (Supplier<String>) e);
             // Recover from exception
         }
     }
