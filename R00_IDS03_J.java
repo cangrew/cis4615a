@@ -1,5 +1,6 @@
 
 import  java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 
 //Rule 00. Input Validation and Data Sanitization (IDS)
@@ -28,9 +29,13 @@ public class R00_IDS03_J {
         else loginSuccessful = false;
 
         if (loginSuccessful) {
-            logger.severe("User login succeeded for: " + username);
+            logger.severe("User login succeeded for: " + sanitizeUser(username));
         } else {
-            logger.severe("User login failed for: " + username);
+            logger.severe("User login failed for: " + sanitizeUser(username));
         }
+    }
+
+    public static String sanitizeUser(String username) {
+        return Pattern.matches("[A-Za-z0-9_]+", username) ? username : "unauthorized user";
     }
 }

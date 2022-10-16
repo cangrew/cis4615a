@@ -11,12 +11,27 @@ public class R13_FIO04_J {
     }
     public int processFile(String fileName)
             throws IOException, FileNotFoundException {
-        FileInputStream stream = new FileInputStream(fileName);
-        BufferedReader bufRead =
-                new BufferedReader(new InputStreamReader(stream));
-        String line;
-        while ((line = bufRead.readLine()) != null) {
-            // Process line
+        try {
+            final FileInputStream stream = new FileInputStream(fileName);
+            try {
+                final BufferedReader bufRead =
+                        new BufferedReader(new InputStreamReader(stream));
+
+                String line;
+                while ((line = bufRead.readLine()) != null) {
+                    // Process line
+                }
+            } finally {
+                if (stream != null) {
+                    try {
+                        stream.close();
+                    } catch (IOException e) {
+                        // Forward to handler
+                    }
+                }
+            }
+        } catch (IOException e) {
+            // Forward to handler
         }
         return 1;
     }

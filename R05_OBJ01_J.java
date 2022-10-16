@@ -3,7 +3,7 @@
 //OBJ01-J. Limit accessibility of fields
 
 public class R05_OBJ01_J {
-    public int total; // Number of elements
+    private int total; // Number of elements
 
     void add() {
         if (total < Integer.MAX_VALUE) {
@@ -21,5 +21,9 @@ public class R05_OBJ01_J {
         } else {
             throw new ArithmeticException("Overflow");
         }
+    }
+
+    public int getTotal () {
+        return total;
     }
 }
